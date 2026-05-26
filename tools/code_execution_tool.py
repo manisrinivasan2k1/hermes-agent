@@ -184,9 +184,9 @@ def check_sandbox_requirements() -> bool:
 _TOOL_STUBS = {
     "web_search": (
         "web_search",
-        "query: str, limit: int = 5",
+        'query: str, search_depth: str = "advanced", chunks_per_source: int = 3, max_results: int = 5, include_images: bool = True, include_image_descriptions: bool = True',
         '"""Search the web. Returns dict with data.web list of {url, title, description}."""',
-        '{"query": query, "limit": limit}',
+        '{"query": query, "search_depth": search_depth, "chunks_per_source": chunks_per_source, "max_results": max_results, "include_images": include_images, "include_image_descriptions": include_image_descriptions}',
     ),
     "web_extract": (
         "web_extract",
@@ -1649,8 +1649,8 @@ def _resolve_child_cwd(mode: str, staging_dir: str) -> str:
 # Ordered to match the canonical display order.
 _TOOL_DOC_LINES = [
     ("web_search",
-     "  web_search(query: str, limit: int = 5) -> dict\n"
-     "    Returns {\"data\": {\"web\": [{\"url\", \"title\", \"description\"}, ...]}}"),
+     '  web_search(query: str, search_depth: str = "advanced", chunks_per_source: int = 3, max_results: int = 5, include_images: bool = True, include_image_descriptions: bool = True) -> dict\n'
+     '    Returns {"data": {"web": [{"url", "title", "description"}, ...]}}'),
     ("web_extract",
      "  web_extract(urls: list[str]) -> dict\n"
      "    Returns {\"results\": [{\"url\", \"title\", \"content\", \"error\"}, ...]} where content is markdown"),
